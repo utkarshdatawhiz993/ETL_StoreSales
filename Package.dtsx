@@ -1,0 +1,1293 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/19/2024 3:31:59 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-PAL7MEUS"
+  DTS:CreatorName="LAPTOP-PAL7MEUS\Ankush_PC"
+  DTS:DTSID="{9883FCBD-C23D-4460-8D67-EC8EEB7C65C8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{2FE036BB-6E73-4EBB-9241-F4CEA0BBC575}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{698BEAEB-CFEB-423F-A33C-C084BD776ED2}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ankush_PC\Downloads\AUS_PostCodeSuburb.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C4BFB556-C585-4D63-B74B-7DBEF334C2DD}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ankush_PC\Downloads\NSW_PropertyMedianValue.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{30B4254B-9B5D-4282-B797-044F061D0CC9}"
+      DTS:ObjectName="LAPTOP-PAL7MEUS\IC.Property Analysis">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-PAL7MEUS\IC;Initial Catalog=Property Analysis;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7584445E-CAC6-43CE-B327-4E5696458672}"
+      DTS:ObjectName="LAPTOP-PAL7MEUS\IC.Property Analysis 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-PAL7MEUS\IC;Initial Catalog=Property Analysis;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ETL_AusLocation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D7569540-7AD6-44D0-B089-39B89B58CB47}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL_AusLocation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL_AusLocation\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'AUS_Post_suburb v2$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_AusLocation\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[postcode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[postcode]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[postcode]"
+                      name="postcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[suburb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[suburb]"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[suburb]"
+                      name="suburb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[city]"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[state]"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[state_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[state_code]"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[state_code]"
+                      name="state_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[lat]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[lat]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[lat]"
+                      name="lat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[lon]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[lon]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[lon]"
+                      name="lon"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[Distric]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[Distric]"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[Distric]"
+                      name="Distric"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[postcode]"
+                      dataType="r8"
+                      name="postcode" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[suburb]"
+                      dataType="wstr"
+                      length="255"
+                      name="suburb" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="255"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="255"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[state_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="state_code" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[lat]"
+                      dataType="r8"
+                      name="lat" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[lon]"
+                      dataType="r8"
+                      name="lon" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].ExternalColumns[Distric]"
+                      dataType="wstr"
+                      length="255"
+                      name="Distric" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[postcode]"
+                      dataType="r8"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[postcode]"
+                      name="postcode" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[suburb]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[suburb]"
+                      name="suburb" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[state]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[state_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[state_code]"
+                      name="state_code" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[lat]"
+                      dataType="r8"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[lat]"
+                      name="lat" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[lon]"
+                      dataType="r8"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[lon]"
+                      name="lon" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[Distric]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[Distric]"
+                      name="Distric" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL_AusLocation\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Australia_Location_specifics]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_AusLocation\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[postcode]"
+                      cachedDataType="r8"
+                      cachedName="postcode"
+                      externalMetadataColumnId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostCode]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[postcode]" />
+                    <inputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[suburb]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="suburb"
+                      externalMetadataColumnId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suburb]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[suburb]" />
+                    <inputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lat]"
+                      cachedDataType="r8"
+                      cachedName="lat"
+                      externalMetadataColumnId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[lat]" />
+                    <inputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lon]"
+                      cachedDataType="r8"
+                      cachedName="lon"
+                      externalMetadataColumnId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[lon]" />
+                    <inputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Distric]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Distric"
+                      externalMetadataColumnId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[District]"
+                      lineageId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output].Columns[Distric]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostCode]"
+                      dataType="i4"
+                      name="PostCode" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suburb]"
+                      dataType="wstr"
+                      length="50"
+                      name="Suburb" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="numeric"
+                      name="Latitude"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="numeric"
+                      name="Longitude"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[District]"
+                      dataType="wstr"
+                      length="50"
+                      name="District" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityTown]"
+                      dataType="wstr"
+                      length="50"
+                      name="CityTown" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateCode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL_AusLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_AusLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_AusLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_AusLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL_AusLocation.Paths[Excel Source Output]"
+              endId="Package\ETL_AusLocation\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\ETL_AusLocation\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ETL_PropertyValue"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9D5D3A28-F9E6-4E44-A5EF-D0480AD020C1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL_PropertyValue"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL_PropertyValue\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">NSW_PropertyMedainValue#csv$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_PropertyValue\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[State]"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[City/Town]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[City/Town]"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[City/Town]"
+                      name="City/Town"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Suburb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Suburb]"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Suburb]"
+                      name="Suburb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Postcode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Postcode]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Postcode]"
+                      name="Postcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[District]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[District]"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[District]"
+                      name="District"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Property_Median_Value]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Property_Median_Value]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Property_Median_Value]"
+                      name="Property_Median_Value"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[City/Town]"
+                      dataType="wstr"
+                      length="255"
+                      name="City/Town" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Suburb]"
+                      dataType="wstr"
+                      length="255"
+                      name="Suburb" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Postcode]"
+                      dataType="r8"
+                      name="Postcode" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[District]"
+                      dataType="wstr"
+                      length="255"
+                      name="District" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].ExternalColumns[Property_Median_Value]"
+                      dataType="cy"
+                      name="Property_Median_Value" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[City/Town]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[City/Town]"
+                      name="City/Town" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Suburb]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Suburb]"
+                      name="Suburb" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Postcode]"
+                      dataType="r8"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Postcode]"
+                      name="Postcode" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[District]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[District]"
+                      name="District" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Property_Median_Value]"
+                      dataType="cy"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[Property_Median_Value]"
+                      name="Property_Median_Value" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL_PropertyValue\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimLocation]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimLocation]) [refTable]
+where [refTable].[CityTown] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LocationID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityTown" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PostCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Suburb" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="State" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateCode" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_NUMERIC" length="0" precision="18" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_NUMERIC" length="0" precision="18" scale="0" codePage="0"/&gt;&lt;referenceColumn name="District" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Location" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[City/Town]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_PropertyValue\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL_PropertyValue\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL_PropertyValue\Lookup.Inputs[Lookup Input].Columns[City/Town]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="City/Town"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[City/Town]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityTown</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\ETL_PropertyValue\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Match Output].Columns[LocationID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Match Output].Columns[LocationID]"
+                      name="LocationID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LocationID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\ETL_PropertyValue\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\ETL_PropertyValue\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_PropertyValue\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL_PropertyValue\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PropertyValue]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_PropertyValue\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-PAL7MEUS\IC.Property Analysis 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Suburb]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Suburb"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suburb]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Suburb]" />
+                    <inputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Postcode]"
+                      cachedDataType="r8"
+                      cachedName="Postcode"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostCode]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Postcode]" />
+                    <inputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[District]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="District"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[District]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[District]" />
+                    <inputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output].Columns[Location]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suburb]"
+                      dataType="wstr"
+                      length="50"
+                      name="Suburb" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostCode]"
+                      dataType="i4"
+                      name="PostCode" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[District]"
+                      dataType="wstr"
+                      length="50"
+                      name="District" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PropertyMedianValue]"
+                      dataType="i4"
+                      name="PropertyMedianValue" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityTown]"
+                      dataType="wstr"
+                      length="50"
+                      name="CityTown" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL_PropertyValue\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ETL_PropertyValue\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_PropertyValue\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_PropertyValue\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_PropertyValue\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL_PropertyValue.Paths[Excel Source Output]"
+              endId="Package\ETL_PropertyValue\Lookup.Inputs[Lookup Input]"
+              name="Excel Source Output"
+              startId="Package\ETL_PropertyValue\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\ETL_AusLocation"
+          TopLeft="468,81" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\ETL_PropertyValue"
+          TopLeft="656,405" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ETL_AusLocation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\ETL_AusLocation\Excel Source"
+          TopLeft="540,74" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ETL_AusLocation\OLE DB Destination"
+          TopLeft="611,259" />
+        <EdgeLayout
+          Id="Package\ETL_AusLocation.Paths[Excel Source Output]"
+          TopLeft="609.5,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87,143"
+              Start="0,0"
+              End="87,135.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.5"
+                    Point2="0,71.5"
+                    Point3="4,71.5" />
+                  <mssgle:LineSegment
+                    End="83,71.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83,71.5"
+                    Point2="87,71.5"
+                    Point3="87,75.5" />
+                  <mssgle:LineSegment
+                    End="87,135.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_AusLocation\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_AusLocation\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL_PropertyValue">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\ETL_PropertyValue\Excel Source"
+          TopLeft="516,86" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ETL_PropertyValue\OLE DB Destination"
+          TopLeft="747,415" />
+        <NodeLayout
+          Size="113,43"
+          Id="Package\ETL_PropertyValue\Lookup"
+          TopLeft="578,232" />
+        <EdgeLayout
+          Id="Package\ETL_PropertyValue.Paths[Excel Source Output]"
+          TopLeft="585.5,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49,104"
+              Start="0,0"
+              End="49,96.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48"
+                    Point2="0,52"
+                    Point3="4,52" />
+                  <mssgle:LineSegment
+                    End="45,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45,52"
+                    Point2="49,52"
+                    Point3="49,56" />
+                  <mssgle:LineSegment
+                    End="49,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_PropertyValue\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_PropertyValue\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_PropertyValue\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimLocation]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
